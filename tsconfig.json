@@ -5,6 +5,16 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
+    "paths": {
+      /* "dyn-import-layer2": [
+        "dist/dyn-import-layer2/dyn-import-layer2",
+        "dist/dyn-import-layer2"
+      ] */
+      /* "dyn-import": [
+        "dist/dyn-import/dyn-import",
+        "dist/dyn-import"
+      ] */
+    },
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,

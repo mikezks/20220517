@@ -3,10 +3,17 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:app": "ng run playground:build",
+    "build:lib-layer1": "ng run dyn-import:build",
+    "build:lib-layer2": "ng run dyn-import-layer2:build",
+    "pack:lib-layer1": "cd dist\\dyn-import && npm pack --pack-destination ..\\..\\bin",
+    "pack:lib-layer2": "cd dist\\dyn-import-layer2 && npm pack --pack-destination ..\\..\\bin",
+    "build:all": "npm run build:lib-layer2 && npm run pack:lib-layer2 && npm i && npm run build:lib-layer1 && npm run pack:lib-layer1 && npm i && npm run build:app",
+    "start:prod": "cd dist\\playground && lite-server",
+    "start": "npm run build:all && npm run start:prod"
   },
   "private": true,
   "dependencies": {
@@ -18,11 +25,14 @@
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
+    "dyn-import": "file:dist/dyn-import/dyn-import-0.0.2.tgz",
+    "dyn-import-layer2": "file:dist/dyn-import-layer2/dyn-import-layer2-0.0.1.tgz",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~13.3.5",
     "@angular/cli": "~13.3.3",
     "@angular/compiler-cli": "~13.3.0",
     "@types/jasmine": "~3.10.0",
@@ -33,6 +43,8 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "lite-server": "^2.6.1",
+    "ng-packagr": "^13.0.0",
     "typescript": "~4.6.2"
   }
 }

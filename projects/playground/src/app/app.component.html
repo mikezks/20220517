@@ -1,0 +1,13 @@
+<ul>
+  <li>
+    <a [routerLink]="['/home']" routerLinkActive="router-link-active">Playground App: Home</a>
+  </li>
+  <li>
+    <a [routerLink]="['/dyn-import/search']" routerLinkActive="router-link-active">Lib w/ dynamic import (layer 1): Search</a>
+  </li>
+  <li>
+    <a [routerLink]="['/dyn-import/edit']" routerLinkActive="router-link-active">Lib w/ dynamic import (layer 2): Edit</a>
+  </li>
+</ul>
+
+<router-outlet></router-outlet>
